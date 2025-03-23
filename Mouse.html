@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mouse Location</title>
+    <style>
+        body{
+            width: 100vw;
+            height: 100vh;
+        }
+    </style>
+</head>
+<body onclick="clicked(event)">
+    <p id="demo">Click anywhere to get mouse coordinates.</p>
+</body>
+
+<script>
+    function clicked(event) {
+        let x = event.clientX; // Get X position of click
+        let y = event.clientY; // Get Y position of click
+        document.getElementById('demo').innerHTML = `X: ${x}, Y: ${y}`;
+    }
+</script>
+</html>

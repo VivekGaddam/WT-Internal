@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Move Image</title>
+    <style>
+        img {
+            position: absolute; /* Make it moveable */
+            left: 0px;
+            top: 50px; /* Ensure it has a defined position */
+        }
+    </style>
+</head>
+<body onload="initImage()">
+    <img id="i" style="width: 100px;" 
+         src="https://images.unsplash.com/photo-1495745966610-2a67f2297e5e?q=80&w=3087&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" 
+         alt="Photo">
+
+    <script>
+        var dom, x, y, finalX = 700;
+
+        function initImage() {
+            dom = document.getElementById('i').style;
+            x = parseInt(dom.left) || 0; 
+            y = parseInt(dom.top) || 50; 
+            moveImage();
+        }
+
+        function moveImage() {
+            if (x < finalX) {
+                x++;
+                dom.left = x + "px";
+                setTimeout(() => moveImage(), 1); // Call function recursively with a delay
+            }
+        }
+    </script>
+</body>
+</html>

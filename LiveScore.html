@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Live Score</title>
+</head>
+<body>
+    <div class="score-card">
+        <h1>Team A <span id="scorea">0</span></h1>
+        <h1>Team B <span id="scoreb">0</span></h1>
+    </div>
+    
+    <button onclick="ScoreA()">Goal Scored by A</button>
+    <button onclick="ScoreB()">Goal Scored by B</button>
+    <button onclick="reset()">Reset Score</button>
+    
+    <p>Match Time: <span id="time">00:00</span></p>
+    <center><button onclick="startMatch()">Start Match</button></center>
+
+    <script>
+        let timer; 
+        let minutes = 0, seconds = 0;
+
+        function ScoreA() {
+            let a = parseInt(document.getElementById('scorea').innerHTML);
+            document.getElementById('scorea').innerHTML = a + 1;
+        }
+
+        function ScoreB() {
+            let b = parseInt(document.getElementById('scoreb').innerHTML);
+            document.getElementById('scoreb').innerHTML = b + 1;
+        }
+
+        function reset() {
+            document.getElementById('scorea').innerHTML = 0;
+            document.getElementById('scoreb').innerHTML = 0;
+            document.getElementById('time').innerHTML = "00:00";
+            clearInterval(timer);
+            minutes = 0;
+            seconds = 0;
+        }
+
+        function startMatch() {
+            clearInterval(timer); 
+            minutes = 0;
+            seconds = 0;
+            timer = setInterval(updateTime, 1000);
+        }
+
+        function updateTime() {
+            seconds++;
+            if (seconds === 60) {
+                seconds = 0;
+                minutes++;
+            }
+            document.getElementById('time').innerHTML = 
+                (minutes < 10 ? "0" : "") + minutes + ":" + 
+                (seconds < 10 ? "0" : "") + seconds;
+        }
+    </script>
+</body>
+</html>

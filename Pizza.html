@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <table border="1">
+        <tr>
+            <th>Iteam Name</th>
+            <th>Price</th>
+            <th>Quantity</th>
+        </tr>
+        <tr>
+            <td>Chicken Pizza</td>
+            <td>100</td>
+            <td><input type="number" name="" id="cp" required></td>
+        </tr>
+        <tr>
+            <td>paneer Pizza</td>
+            <td>80</td>
+            <td><input type="number" name="" id="pp" required></td>
+        </tr>
+        <tr>
+            <td>veg pizza</td>
+            <td>70</td>
+            <td><input type="number" name="" id="vp" required></td>
+        </tr>
+    </table>
+    <br>
+    <button onclick="totalPrize()"> totalPrize </button>
+    <input type="text" id="total">
+    <br>
+    <br>
+    <button onclick="confrim()">confrim order</button>
+    <button onclick="cancel()">cancel order</button>
+
+</body>
+<script>
+    function totalPrize(){
+        cp=parseInt(document.getElementById('cp').value)
+        pp=parseInt(document.getElementById('pp').value)
+        vp=parseInt(document.getElementById('vp').value)
+        document.getElementById('total').value= 100*cp+80*pp+70*vp
+}
+    function confrim(){
+        alert("order confrimeed")
+    }
+    function cancel(){
+        document.getElementById('cp').value=""
+        document.getElementById('pp').value=""
+        document.getElementById('vp').value=""
+        document.getElementById('total').value=""
+    }
+</script>
+</html>
